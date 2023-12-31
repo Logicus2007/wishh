@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphic Love Letter</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #151414;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #center-letter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        #opening-letter, #letter {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.393); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #opening-letter {
+            animation: openLetter 1s forwards;
+        }
+
+        #letter-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            z-index: 1;
+        }
+
+        #letter {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.415); /* Semi-transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart {
+            animation: float 2s infinite linear;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes openLetter {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="center-letter">
+        <div id="opening-letter">
+            <p style="font-size: 1.5em; color: #1e090d;">My Dearest Kunnu😘,</p>
+            <p>Happy new Year my girl🥳🥳🥳, oru developer aya kamukan igane okke alle pattollu😁 .</p>
+            <p>Enim our 100000 varsham nmmk igane ormich adth irnn ellam akoshikkan pattathe<br> Ente 2023 le ella vijayathinum kude ninna kunnuthaaa😘😘😘😘<br>
+                thankyou so much💝💝💝 Love you korem.</p>
+            <p style="font-style: italic;">Forever Yours,</p>
+            <p style="font-weight: bold;">Chabi😊</p>
+        </div>
+    </div>
+
+    <div id="letter-container" onclick="showLetter()">
+        <div id="letter">
+            <p style="font-size: 1.5em; color: #fc0734;">My Dearest Kunnu😘,</p>
+            <p>Happy new Year my girl🥳🥳🥳, oru developer aya kamukan igane okke alle pattollu😁 .</p>
+            <p>Enim our 100000 varsham nmmk igane ormich adth irnn ellam akoshikkan pattathe<br> Ente 2023 le ella vijayathinum kude ninna kunnuthaaa😘😘😘😘<br>
+                thankyou so much💝💝💝 Love you korem.</p>
+            <p style="font-style: italic;">Forever Yours,</p>
+            <p style="font-weight: bold;">Chabi😊</p>
+        </div>
+    </div>
+
+    <div id="background"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Create hearts
+            const numHearts = 100;
+            const background = document.getElementById("background");
+            
+            for (let i = 0; i < numHearts; i++) {
+                createHeart();
+            }
+
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "💖"; // Change to your desired emoji
+                heart.style.position = "absolute";
+                heart.style.left = `${Math.random() * window.innerWidth}px`;
+                heart.style.top = `${Math.random() * window.innerHeight}px`;
+                background.appendChild(heart);
+            }
+        });
+
+        function showLetter() {
+            const letterContainer = document.getElementById("letter-container");
+            const openingLetter = document.getElementById("opening-letter");
+            letterContainer.style.display = "block";
+            openingLetter.style.display = "none"; // hide the opening letter
+        }
+    </script>
+</body>
+</html>
